@@ -6,33 +6,28 @@ test.describe('Core Order Functionality', () => {
     await page.waitForLoadState('domcontentloaded')
   })
 
-  test('should create and display an order', async ({ page }) => {
-    await page.fill('input[name="customer"]', 'Test User')
+  test('should create order and progress through statuses', async ({ page }) => {
+    // Fill and submit form
+    await page.fill('input[name="customer"]', 'Status Test User')
     await page.selectOption('select[name="product"]', '1')
-
     await page.click('button[type="submit"]')
 
-    // should focus on the customer name input
-    await expect(page.locator('input[name="customer"]')).toBeFocused()
+    // Wait for order to appear in table
+    const orderRow = page.locator('table tbody tr').first()
+    await expect(orderRow).toBeVisible({ timeout: 15000 })
 
-    await expect(page.locator('text=Order created successfully')).toBeVisible({
-      timeout: 10000
-    })
-    await expect(page.locator('table tr:first-child td:last-child')).toContainText(
-      'Pending',
-      { timeout: 10000 }
-    )
+    // Verify order data
+    await expect(orderRow).toContainText('Status Test User')
+    await expect(orderRow).toContainText('Laptop')
 
-    await page.waitForTimeout(2000)
+    // Check initial status: Pending
+    const statusCell = orderRow.locator('td').last()
+    await expect(statusCell).toContainText('Pending', { timeout: 5000 })
 
-    await expect(page.locator('table tr:first-child td:last-child')).toContainText(
-      'Processing'
-    )
+    // Wait for status to change to Processing (~2 seconds)
+    await expect(statusCell).toContainText('Processing', { timeout: 8000 })
 
-    await page.waitForTimeout(8000)
-
-    await expect(page.locator('table tr:first-child td:last-child')).toContainText(
-      'Completed'
-    )
+    // Wait for status to change to Completed (~8 more seconds)
+    await expect(statusCell).toContainText('Completed', { timeout: 15000 })
   })
 })

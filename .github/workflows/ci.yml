@@ -47,3 +47,4 @@ jobs:
         run: cd apps/client && bun run test:e2e
         env:
           CI: true
+        timeout-minutes: 10
