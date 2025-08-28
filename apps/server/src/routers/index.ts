@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
+import { on } from 'node:events'
 import { createOrderSchema } from '@order-processing/shared'
-import { on } from 'events'
 import { emitEvent } from '@/lib/eventEmitter'
 import { publicProcedure, router } from '../lib/trpc'
 import { orders } from './orders/data'

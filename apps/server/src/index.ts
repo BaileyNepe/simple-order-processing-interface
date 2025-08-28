@@ -5,7 +5,7 @@ import express from 'express'
 import { createContext } from './lib/context'
 import { appRouter } from './routers/index'
 
-const app = express()
+const app = express() as express.Express
 
 app.use(
   cors({
@@ -30,3 +30,5 @@ app.get('/', (_req, res) => {
 
 const port = process.env.PORT || 5001
 app.listen(port, () => {})
+
+export default app
