@@ -12,11 +12,11 @@ test.describe('Core Order Functionality', () => {
 
     await page.click('button[type="submit"]')
 
+    await expect(page.locator('text=Order created successfully')).toBeVisible()
     await expect(page.locator('table tr:first-child td:last-child')).toContainText(
       'Pending'
     )
 
-    await expect(page.locator('text=Order created successfully')).toBeVisible()
     await page.waitForTimeout(2000)
 
     await expect(page.locator('table tr:first-child td:last-child')).toContainText(
