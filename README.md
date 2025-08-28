@@ -31,6 +31,12 @@ bun run dev
 - `bun run check-types` - Type checking
 - `bun run check` - Lint and format code
 
+## Testing
+- `bun run test` - Run unit tests (interactive)
+- `bun run test:run` - Run unit tests (once)
+- `bun run test:e2e` - Run E2E tests with Playwright
+- `bun run test:all` - Run all tests
+
 ## Environment Variables
 - `PORT` - Server port (default: 5001)
 - `CORS_ORIGIN` - Allowed CORS origin

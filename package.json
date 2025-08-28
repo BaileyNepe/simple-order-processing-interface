@@ -11,7 +11,10 @@
     "build": "turbo build",
     "check-types": "turbo check-types",
     "dev:client": "turbo -F client dev",
-    "dev:server": "turbo -F server dev"
+    "dev:server": "turbo -F server dev",
+    "test": "turbo test",
+    "test:e2e": "turbo test:e2e",
+    "test:all": "turbo test:all"
   },
   "dependencies": {},
   "devDependencies": {
