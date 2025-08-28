@@ -33,6 +33,8 @@ jobs:
 
       - name: Build client
         run: cd apps/client && bun run build
+        env:
+          VITE_SERVER_URL: http://localhost:5001
 
       - name: Run backend tests
         run: cd apps/server && bun run test -- run
@@ -47,4 +49,7 @@ jobs:
         run: cd apps/client && bun run test:e2e
         env:
           CI: true
+          PORT: 5001
+          CORS_ORIGIN: http://localhost:3001
+          VITE_SERVER_URL: http://localhost:5001
         timeout-minutes: 10
