@@ -7,9 +7,11 @@ import { appRouter } from './routers/index'
 
 const app = express() as express.Express
 
+const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:3001'
+
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || '',
+    origin: corsOrigin || '',
     methods: ['GET', 'POST', 'OPTIONS']
   })
 )

@@ -5,6 +5,7 @@ import type { FC, PropsWithChildren } from 'react'
 import { api, queryClient } from '@/utils/trpc'
 
 export const TRPCContext: FC<PropsWithChildren> = ({ children }) => {
+  const serverUrl = import.meta.env.VITE_SERVER_URL ?? 'http://localhost:5001'
   return (
     <api.Provider
       client={api.createClient({
@@ -14,11 +15,11 @@ export const TRPCContext: FC<PropsWithChildren> = ({ children }) => {
             true: [
               retryLink({ retry: () => true }),
               httpSubscriptionLink({
-                url: `${import.meta.env.VITE_SERVER_URL}/trpc`
+                url: `${serverUrl}/trpc`
               })
             ],
             false: httpBatchLink({
-              url: `${import.meta.env.VITE_SERVER_URL}/trpc`
+              url: `${serverUrl}/trpc`
             })
           })
         ]
