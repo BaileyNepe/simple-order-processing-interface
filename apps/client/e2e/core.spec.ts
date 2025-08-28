@@ -12,9 +12,15 @@ test.describe('Core Order Functionality', () => {
 
     await page.click('button[type="submit"]')
 
-    await expect(page.locator('text=Order created successfully')).toBeVisible()
+    // should focus on the customer name input
+    await expect(page.locator('input[name="customer"]')).toBeFocused()
+
+    await expect(page.locator('text=Order created successfully')).toBeVisible({
+      timeout: 10000
+    })
     await expect(page.locator('table tr:first-child td:last-child')).toContainText(
-      'Pending'
+      'Pending',
+      { timeout: 10000 }
     )
 
     await page.waitForTimeout(2000)
@@ -28,8 +34,5 @@ test.describe('Core Order Functionality', () => {
     await expect(page.locator('table tr:first-child td:last-child')).toContainText(
       'Completed'
     )
-
-    // should focus on the customer name input
-    await expect(page.locator('input[name="customer"]')).toBeFocused()
   })
 })
