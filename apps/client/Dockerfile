@@ -8,10 +8,11 @@ COPY packages/shared/package.json ./packages/shared/
 COPY apps/client/package.json ./apps/client/
 COPY apps/server/package.json ./apps/server/
 
-
 RUN bun install
 
-RUN bun run build --filter=@order-processing/shared
+COPY . .
+
+RUN cd packages/shared && bun run build && cd ../..
 
 WORKDIR /app/apps/client
 

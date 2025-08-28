@@ -11,9 +11,8 @@ RUN bun install
 
 COPY . .
 
-
-RUN bun run build --filter=@order-processing/shared
-RUN bun run build --filter=server
+RUN cd packages/shared && bun run build
+RUN cd apps/server && bun run build
 
 WORKDIR /app/apps/server
 
