@@ -1,0 +1,34 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: ./apps/server/Dockerfile
+    ports:
+      - "5001:5001"
+    environment:
+      - NODE_ENV=production
+      - PORT=5001
+      - CORS_ORIGIN=http://localhost:3001
+    networks:
+      - order-processing-network
+
+  client:
+    build:
+      context: .
+      dockerfile: ./apps/client/Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - VITE_SERVER_URL=http://localhost:5001
+    depends_on:
+      - server
+    networks:
+      - order-processing-network
+
+networks:
+  order-processing-network:
+    driver: bridge
+
+volumes:
+  node_modules:
+
