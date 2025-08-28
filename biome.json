@@ -1,0 +1,119 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+  "vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
+  "files": {
+    "includes": [
+      "**",
+      "!**/node_modules/",
+      "!**/dist/",
+      "!**/.prettierrc.js",
+      "!**/assets/**/*",
+      "!**/routeTree.gen.ts",
+      "!**/dist/",
+      "!**/build/",
+      "!**/node_modules/**/*",
+      "!**/dist/**/*",
+      "!**/env.d.ts",
+      "!**/server/dist/",
+      "!**/client/dist/",
+      "!**/routeTree.gen.ts"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "useEditorconfig": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 90,
+    "attributePosition": "auto",
+    "bracketSpacing": true
+  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "performance": {
+        "noAccumulatingSpread": "off"
+      },
+      "a11y": {
+        "useKeyWithClickEvents": "off",
+        "useSemanticElements": "off",
+        "noStaticElementInteractions": "off",
+        "useButtonType": "off",
+        "useAriaPropsSupportedByRole": "off"
+      },
+      "complexity": {
+        "noExtraBooleanCast": "error",
+        "noUselessRename": "error",
+        "noUselessStringConcat": "error",
+        "noUselessTernary": "error",
+        "noUselessUndefinedInitialization": "error",
+        "useArrowFunction": "error",
+        "useLiteralKeys": "error",
+        "noArguments": "error",
+        "useNumericLiterals": "error"
+      },
+      "correctness": {
+        "noInvalidUseBeforeDeclaration": "off",
+        "noUnusedVariables": "warn",
+        "noUnusedImports": "warn"
+      },
+      "style": {
+        "noParameterAssign": "error",
+        "noUselessElse": "off",
+        "noYodaExpression": "error",
+        "useBlockStatements": "off",
+        "useCollapsedElseIf": "error",
+        "useConst": "error",
+        "useExponentiationOperator": "error",
+        "useForOf": "warn",
+        "useImportType": "warn",
+        "useShorthandAssign": "error",
+        "useSingleVarDeclarator": "error",
+        "useTemplate": "error"
+      },
+      "suspicious": {
+        "noExplicitAny": "error",
+        "noConsole": "warn",
+        "noDebugger": "warn",
+        "noDoubleEquals": "error",
+        "noEmptyBlockStatements": "off",
+        "noVar": "error",
+        "noArrayIndexKey": "off"
+      }
+    },
+    "includes": [
+      "**/*.ts",
+      "**/*.tsx",
+      "!**/dist/",
+      "!**/build/",
+      "!**/node_modules/**/*",
+      "!**/dist/**/*",
+      "!**/.prettierrc.js",
+      "!**/.eslintrc.js",
+      "!**/env.d.ts",
+      "!**/node_modules/**",
+      "!**/client/node_modules/**",
+      "!**/server/node_modules/**",
+      "!**/server/dist/",
+      "!**/client/dist/",
+      "!**/routeTree.gen.ts"
+    ]
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "single",
+      "quoteProperties": "asNeeded",
+      "trailingCommas": "none",
+      "semicolons": "asNeeded",
+      "arrowParentheses": "always",
+      "bracketSameLine": false,
+      "quoteStyle": "single",
+      "attributePosition": "auto",
+      "bracketSpacing": true
+    }
+  }
+}

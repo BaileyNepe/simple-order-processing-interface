@@ -1,0 +1,22 @@
+{
+  "name": "order-processing",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "check": "biome check --write .",
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:client": "turbo -F client dev",
+    "dev:server": "turbo -F server dev"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "turbo": "^2.5.4",
+    "@biomejs/biome": "^2.2.0"
+  },
+  "packageManager": "bun@1.2.19"
+}

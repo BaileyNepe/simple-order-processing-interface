@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Current TypeScript File",
+      "type": "node",
+      "request": "launch",
+      "program": "${file}",
+      "cwd": "${workspaceFolder}/packages/utils",
+      "runtimeArgs": ["--loader", "ts-node/esm"],
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "smartStep": true,
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+      "env": {
+        "NODE_OPTIONS": "--loader ts-node/esm"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "testFile",
+      "description": "Test file to run",
+      "default": "algorithms.test.ts",
+      "type": "promptString"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+node_modules
+.turbo
+.alchemy
+.env
+
+**/prisma/generated
+
+dist
